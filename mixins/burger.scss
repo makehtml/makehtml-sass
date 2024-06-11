@@ -1,0 +1,72 @@
+@use "../mixins/media.scss" as *;
+
+@mixin burger($element: "burger", $inner: "inner", $modifier: "open") {
+  .#{$element} {
+    display: block;
+    width: 24px;
+    height: 24px;
+    padding-right: 0;
+    padding-left: 0;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    @include media-min(lg) { display: none; }
+
+    &:hover {
+      .#{$element}-#{$inner}::before { top: -.5rem; }
+      .#{$element}-#{$inner}::after { top: .5rem; }
+    }
+
+    &:active {
+      .#{$element}-#{$inner}::before { top: -.275px; }
+      .#{$element}-#{$inner}::after { top: .275px; }
+    }
+
+    &--#{$modifier} {
+      .#{$element}-#{$inner} {
+        transition: transform var(--animation-duration-slow) ease;
+        transform: rotate(315deg);
+
+        &::before,
+        &::after {
+          top: 0;
+          transition: var(--animation-duration-fast) ease-in;
+        }
+        &::before { transform: rotate(90deg); }
+        &::after { transform: rotate(180deg); }
+      }
+
+      &:hover {
+        .#{$element}-#{$inner} {
+          transform: rotate(225deg);
+
+          &::before,
+          &::after { top: 0; }
+        }
+      }
+    }
+  }
+
+  .#{$element}-#{$inner} {
+    position: relative;
+    display: block;
+    height: 1px;
+    font-size: 0;
+    background-color: var(--theme-fg);
+    transition: transform var(--animation-duration-fast) ease-in;
+
+    &::before,
+    &::after {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: inherit;
+      content: "";
+      background-color: inherit;
+      transition: top var(--animation-duration-slow) ease-out, transform var(--animation-duration) ease-in;
+    }
+    &::before { top: -.325rem; }
+    &::after { top: .325rem; }
+  }
+}

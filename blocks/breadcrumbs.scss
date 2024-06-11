@@ -1,0 +1,17 @@
+@use "../mixins/container.scss" as *;
+
+.breadcrumbs__container { @include container; }
+.breadcrumbs__nav { font-size: 1rem; }
+
+.breadcrumbs__list {
+  display: flex;
+  padding-left: 0;
+  list-style-type: none;
+
+  > li:not(:last-child) {
+    margin-right: 10px;
+
+    &::after { content: "/"; }
+  }
+}
+.breadcrumbs__link { margin-right: 10px; }
