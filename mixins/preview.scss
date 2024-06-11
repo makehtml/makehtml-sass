@@ -1,0 +1,90 @@
+@mixin preview-section {
+  margin-right: -#{$gap-sm};
+  margin-left: -#{$gap-sm};
+
+  @include media-min(md) {
+    margin-right: -#{$gap-md};
+    margin-left: -#{$gap-md};
+  }
+  @include media-min(lg) {
+    margin-right: -#{$gap-lg};
+    margin-left: -#{$gap-lg};
+  }
+  @include media-min(xl) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+@mixin preview-content { position: relative; }
+@mixin preview-item {
+  position: relative;
+  min-height: 300px;
+  color: white;
+}
+@mixin preview-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@mixin preview-wrap {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  min-height: 300px;
+  padding: 40px 25px 40px 40px;
+  background-color: var(--color-transparent-dark);
+
+  @include media-min(md) { padding: 80px 50px 70px 80px; }
+  @include media-min(lg) {
+    width: calc(50% - 10px);
+
+    &--right { margin-left: auto; }
+  }
+  @include media-min(xl) { padding-bottom: 130px; }
+}
+@mixin preview-description {
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  justify-items: start;
+  width: 100%;
+  min-height: 100%;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-transparent-active);
+
+  @include media-min(md) { padding-bottom: 3.75rem; }
+}
+@mixin preview-title {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  @include media-min(md) { margin-bottom: 2.5rem; }
+}
+@mixin preview-text {
+  margin-top: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+
+  @include media-min(md) { font-size: 1.5rem; }
+}
+@mixin preview-btn {
+  @include btn-dark-lg;
+
+  margin-top: .875rem;
+
+  > span + svg {
+    margin: 0;
+    margin-left: 4px;
+  }
+
+  @include media-min(md) {
+    margin-top: 1.875rem;
+
+    > span + svg { margin-left: 8px; }
+  }
+}

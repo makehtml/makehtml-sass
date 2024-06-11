@@ -1,0 +1,4 @@
+@use "../mixins/btn.scss" as *;
+
+.btn { @include btn-primary; }
+.btn-secondary { @include btn-border; }

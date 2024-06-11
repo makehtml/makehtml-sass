@@ -1,0 +1,56 @@
+@use "../mixins/btn.scss" as *;
+
+.tickets__item {
+  padding: 0 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--theme-border-focus);
+
+  &--reply {
+    margin-right: 3rem;
+    border: 1px solid var(--theme-border);
+  }
+
+  &--not-my {
+    margin-right: 0;
+    margin-left: 3rem;
+  }
+
+  &--floating-label {
+    position: relative;
+    padding-top: 1rem;
+    margin-top: 2.5rem;
+
+    > h2 {
+      position: absolute;
+      top: -2.5rem;
+      left: .5rem;
+      padding: .125rem .5rem;
+      background-color: var(--theme-bg-alt);
+    }
+  }
+
+  &--new { background-color: var(--theme-bg-alt); }
+}
+
+.tickets__details {
+  color: var(--theme-border-focus);
+
+  small { display: block; }
+}
+
+.tickets__summary {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+
+  small { margin-left: auto; }
+
+  code {
+    padding: .125rem .75rem;
+    background-color: var(--theme-border);
+    border-radius: .25rem;
+  }
+}
+
+.tickets__btn { @include btn-secondary; }
